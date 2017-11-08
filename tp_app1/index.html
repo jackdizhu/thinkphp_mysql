@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+    <meta name="renderer" content="webkit" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="Expires" content="-1"/>
+
+    <meta http-equiv="Cache-Control" content="no-cache"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <title>tp_app1</title>
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <link rel="stylesheet" type="text/css" href="./css/base.css">
+
+</head>
+<body>
+
+  <div class="formBox">
+    <label>
+      <span>用户名</span>
+      <input type="text" id="userName" name="userName"/>
+    </label>
+    <label>
+      <span>原密码</span>
+      <input type="password" id="oldPassword" name="oldPassword"/>
+    </label>
+    <label>
+      <span>新密码</span>
+      <input type="password" id="password" name="password"/>
+    </label>
+    <label>
+      <span>确认密码</span>
+      <input type="password" id="password2" name="password2"/>
+    </label>
+    <a href="javascript:;" class="aBtn">注册</a>
+  </div>
+
+  <script type="text/javascript" src="./js/jquery.min.js"></script>
+  <script type="text/javascript" src="./js/com.js"></script>
+  <script type="text/javascript">
+    $('.aBtn').on('click',function () {
+      var data = {
+        userName: $('#userName').val(),
+        oldPassword: $('#oldPassword').val(),
+        password: $('#password').val(),
+        password2: $('#password2').val()
+      };
+      _post('http://127.0.0.1/php/thinkphp/Api/index',data,function (res) {
+        _log(res);
+      });
+
+    });
+  </script>
+
+</html>
