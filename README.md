@@ -14,3 +14,6 @@ tp3.2
   2. M('User')->where($w_arr)->find(); 根据条件查询一条纪录
   3. M('User')->where($w_arr)->save($arr); 根据条件查询一条纪录 并修改
   4. $this->ajaxReturn($arr,'json'); ajax 返回json 数据
+
+tp5.0
+  1. /thinkphp/public/index.php/index/index/index  index(模块名称)/index(index.php index 类)/index(方法) 默认路径

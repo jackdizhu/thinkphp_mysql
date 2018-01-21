@@ -51,7 +51,7 @@
         password: $('#password').val(),
         password2: $('#password2').val()
       };
-      _post('http://127.0.0.1/php/thinkphp/Api/editpwd',data,function (res) {
+      _post('../thinkphp/public/editpwd',data,function (res) {
         _log(res);
       });
 

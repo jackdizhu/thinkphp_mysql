@@ -1,35 +1,40 @@
 <?php
 namespace app\index\controller;
-class Register {
+
+use think\Controller;
+use think\Db;
+use think\Request;
+
+class Register extends Controller {
     public function index(){
-        $User = M('User');
-        // $this->show('index');
-        $arr['userName']=I('post.userName');
+
+        $User = Db::name('User');
+
+        $arr['userName']=input('get.userName');
+        $arr['password']=input('get.password');
+
         $w_arr['userName']=$arr['userName'];
 
-        $arr['password']=I('post.password');
-        $arr['password2']=I('post.password2');
-        if($arr['userName'] && $arr['password'] && $arr['password2']){
+        if($arr['userName'] && $arr['password']){
 
-            $oli_id = M('User')->where($w_arr)->find();
+            $oli_id = Db::name('User')->where($w_arr)->find();
             if($oli_id){
                 $arr['code'] = '2';
                 $arr['err'] = '用户名已存在';
-                $this->ajaxReturn($arr,'json');
             }
 
-            $id = M('User')->add($arr);
+            $id = Db::name('User')->insert($arr);
             if($id){
                 $arr['code'] = '1';
             }else{
                 $arr['err'] = '增加数据失败';
                 $arr['code'] = '3';
             }
-            $this->ajaxReturn($arr,'json');
         }else{
             $arr['err'] = '填写信息不全 . . ';
             $arr['code'] = '3';
-            $this->ajaxReturn($arr,'json');
         }
+
+        return json_encode($arr);
     }
 }

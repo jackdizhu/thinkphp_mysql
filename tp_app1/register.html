@@ -40,13 +40,14 @@
   <script type="text/javascript" src="./js/jquery.min.js"></script>
   <script type="text/javascript" src="./js/com.js"></script>
   <script type="text/javascript">
+    var host = 'http://127.0.0.1/tp3.2_mysql_jq/thinkphp/public/index.php';
     $('.aBtn').on('click',function () {
       var data = {
         userName: $('#userName').val(),
         password: $('#password').val(),
         password2: $('#password2').val()
       };
-      _post('http://127.0.0.1/php/thinkphp/Api/register',data,function (res) {
+      _get(host + '/index/Register/index',data,function (res) {
         _log(res);
       });
 
