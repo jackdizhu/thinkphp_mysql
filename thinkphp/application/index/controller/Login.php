@@ -5,7 +5,7 @@ use think\Controller;
 use think\Db;
 use think\Request;
 
-class Login {
+class Login extends Controller {
     public function index(){
         $User = Db::name('User');
         // $this->show('index');
