@@ -11,6 +11,12 @@
 
 // [ 应用入口文件 ]
 
+header("Access-Control-Allow-Origin: *"); // 配置允许跨域
+header('Access-Control-Allow-Headers:Authorization');
+header("Access-Control-Allow-Methods: GET, POST, DELETE");
+header("Access-Control-Allow-Credentials: true");
+header("Access-Control-Allow-Headers: Content-Type, X-Requested-With, Cache-Control,Authorization");
+
 // 定义应用目录
 define('APP_PATH', __DIR__ . '/../application/');
 // 加载框架引导文件
