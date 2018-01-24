@@ -1,6 +1,10 @@
 <?php
 namespace app\index\controller;
 
+use think\Session;
+use think\Cookie;
+use think\Config;
+
 class Index
 {
     public function index()

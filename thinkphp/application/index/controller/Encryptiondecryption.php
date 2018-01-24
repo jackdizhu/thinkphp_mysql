@@ -4,13 +4,29 @@ namespace app\index\controller;
 use think\Controller;
 use think\Db;
 use think\Request;
+use think\Session;
+use think\Cookie;
 
 class Encryptiondecryption extends Controller {
     const rsa_en = 'http://127.0.0.1/thinkphp_mysql/thinkphp/public/index.php/index/Encryptiondecryption/rsa_en?data=';
     const rsa_de = 'http://127.0.0.1/thinkphp_mysql/thinkphp/public/index.php/index/Encryptiondecryption/rsa_de?data=';
+    public function delcookie(){
+            
+            // 设置 Cookie 有效期为 3600秒
+            Cookie::delete('data');
+
+        return 'Cookie is del';
+    }
     public function index(){
+            
+            $_data = input('get.data', 'test');
+            // 设置 Session
+            Session::set('data', $_data);
+            // 设置 Cookie 有效期为 3600秒
+            Cookie::set('data', $_data, 3600);
+
             // php 7.1
-            $data = 'test';
+            $data = $_data;
             echo '原始内容: '.$data."<br/>";
 
             $en = '';
