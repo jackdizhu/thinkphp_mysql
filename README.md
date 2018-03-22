@@ -1,7 +1,16 @@
-thinkPHP3.2.3 + mysql + jquery
+# thinkPHP3.2.3 + mysql + jquery
+
   1. 实现 登录 注册 修改密码 基本功能
 
-php 笔记
+# 记录
+
+    // html 地址
+    http://127.0.0.1/thinkphp_mysql/tp_app1/
+    // api 地址
+    http://127.0.0.1/thinkphp_mysql/thinkphp/public/index.php/index/Register/index
+
+# php 笔记
+
   1. const 声明常量
   2. public 公有属性或方法 普通原型方法
   3. static 静态方法 静态的数据是存在 内存中
@@ -9,7 +18,8 @@ php 笔记
   5. final 不能被子类所继承 不能被子类的方法覆盖
   6. protected 受保护类型 (在子类中可以通过self:: 或 parent:: 来调用, 在实例中不能通过$obj-> 来调用)
 
-tp3.2
+# tp3.2
+
   1. M('User')->add($arr); 新增一条纪录
   2. M('User')->where($w_arr)->find(); 根据条件查询一条纪录
   3. M('User')->where($w_arr)->save($arr); 根据条件查询一条纪录 并修改
@@ -26,7 +36,7 @@ tp3.2
        * @return Action|false
        */
       A($name,$layer='',$common=false)
-      
+
       B函数: 执行某个行为
       /**
        * 执行某个行为
@@ -35,7 +45,7 @@ tp3.2
        * @return void
        */
       B($name, &$params=NULL)
-      
+
       C函数: 获取和设置配置参数 支持批量定义
       /**
        * 获取和设置配置参数 支持批量定义
@@ -44,7 +54,7 @@ tp3.2
        * @return mixed
        */
       C($name=null, $value=null)
-      
+
       D函数: 用于实例化Model 格式 项目://分组/模块
       /**
        * D函数用于实例化Model 格式 项目://分组/模块
@@ -53,7 +63,7 @@ tp3.2
        * @return Model
        */
       D($name='',$layer='')
-      
+
       F函数: 快速文件数据读取和保存 针对简单类型数据 字符串、数组
       /**
        * 快速文件数据读取和保存 针对简单类型数据 字符串、数组
@@ -62,8 +72,8 @@ tp3.2
        * @param string $path 缓存路径
        * @return mixed
        */
-      F($name, $value='', $path=DATA_PATH) 
-      
+      F($name, $value='', $path=DATA_PATH)
+
       G函数: 记录和统计时间（微秒）和内存使用情况
       /**
        * 记录和统计时间（微秒）和内存使用情况
@@ -79,11 +89,11 @@ tp3.2
        * </code>
        * @param string $start 开始标签
        * @param string $end 结束标签
-       * @param integer|string $dec 小数位或者m 
+       * @param integer|string $dec 小数位或者m
        * @return mixed
        */
       G($start,$end='',$dec=4)
-      
+
       I函数: 获取输入参数 支持过滤和默认值
       /**
        * 获取输入参数 支持过滤和默认值
@@ -92,14 +102,14 @@ tp3.2
        * I('id',0); 获取id参数 自动判断get或者post
        * I('post.name','','htmlspecialchars'); 获取$_POST['name']
        * I('get.'); 获取$_GET
-       * </code> 
+       * </code>
        * @param string $name 变量的名称 支持指定类型
        * @param mixed $default 不存在的时候默认值
        * @param mixed $filter 参数过滤方法
        * @return mixed
        */
       I($name,$default='',$filter=null)
-      
+
       L函数: 获取和设置语言定义(不区分大小写)
       /**
        * 获取和设置语言定义(不区分大小写)
@@ -108,7 +118,7 @@ tp3.2
        * @return mixed
        */
       L($name=null, $value=null)
-      
+
       M函数: 用于实例化一个没有模型文件的Model
       /**
        * M函数用于实例化一个没有模型文件的Model
@@ -118,7 +128,7 @@ tp3.2
        * @return Model
        */
       M($name='', $tablePrefix='',$connection='')
-      
+
       N函数: 设置和获取统计数据
       /**
        * 设置和获取统计数据
@@ -128,23 +138,23 @@ tp3.2
        * N('read',1); // 记录读取次数
        * echo N('db'); // 获取当前页面数据库的所有操作次数
        * echo N('read'); // 获取当前页面读取次数
-       * </code> 
+       * </code>
        * @param string $key 标识位置
        * @param integer $step 步进值
        * @return mixed
        */
       N($key, $step=0,$save=false)
-      
+
       R函数: 远程调用模块的操作方法 URL 参数格式 [项目://][分组/]模块/操作
       /**
        * 远程调用模块的操作方法 URL 参数格式 [项目://][分组/]模块/操作
        * @param string $url 调用地址
-       * @param string|array $vars 调用参数 支持字符串和数组 
+       * @param string|array $vars 调用参数 支持字符串和数组
        * @param string $layer 要调用的控制层名称
        * @return mixed
        */
       R($url,$vars=array(),$layer='')
-      
+
       S函数: 缓存管理
       /**
        * 缓存管理
@@ -153,8 +163,8 @@ tp3.2
        * @param mixed $options 缓存参数
        * @return mixed
        */
-      S($name,$value='',$options=null) 
-      
+      S($name,$value='',$options=null)
+
       T函数: 获取模版文件 格式 项目://分组@主题/模块/操作
       /**
        * 获取模版文件 格式 项目://分组@主题/模块/操作
@@ -163,7 +173,7 @@ tp3.2
        * @return string
        */
       T($template='',$layer='')
-      
+
       U函数: URL组装 支持不同URL模式
       /**
        * URL组装 支持不同URL模式
@@ -175,26 +185,27 @@ tp3.2
        * @return string
        */
       U($url='',$vars='',$suffix=true,$redirect=false,$domain=false)
-      
+
       W函数: 渲染输出Widget
       /**
        * 渲染输出Widget
        * @param string $name Widget名称
        * @param array $data 传入的参数
-       * @param boolean $return 是否返回内容 
+       * @param boolean $return 是否返回内容
        * @param string $path Widget所在路径
        * @return void
        */
       W($name, $data=array(), $return=false,$path='')
 
-tp5.0
+# tp5.0
+
   1. /thinkphp/public/index.php/index/index/index  index(模块名称)/index(index.php index 类)/index(方法) 默认路径
   2. Db::name('User')->insert($arr); 新增一条纪录
   3. Db::name('User')->where($w_arr)->find(); 根据条件查询一条纪录
   4. Db::name('User')->where($w_arr)->update($arr); 根据条件查询一条纪录 并修改
   5. return json($arr); ajax 返回json 数据
-    
-    tp5.0 助手函数: 
+
+    tp5.0 助手函数:
 
       exception：抛出异常处理
 
