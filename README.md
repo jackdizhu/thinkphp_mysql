@@ -9,6 +9,29 @@
     // api 地址
     http://127.0.0.1/thinkphp_mysql/thinkphp/public/index.php/index/Register/index
 
+# jwt 参数组成
+
+``` js
+{
+  // nbf (Not Before)：如果当前时间在nbf里的时间之前，则Token不被接受；一般都会留一些余地，比如几分钟；，是否使用是可选的；
+  "nbf": 1357000000,
+  // iss: 该JWT的签发者，是否使用是可选的；
+  "iss": "Online JWT Builder",
+  // iat(issued at): 在什么时候签发的(UNIX时间)，是否使用是可选的；
+  "iat": 1416797419,
+  // exp(expires): 什么时候过期，这里是一个Unix时间戳，是否使用是可选的；
+  "exp": 1448333419,
+  // aud: 接收该JWT的一方，是否使用是可选的；
+  "aud": "www.example.com",
+  // sub: 该JWT所面向的用户，是否使用是可选的；
+  "sub": "jrocket@example.com",
+  "GivenName": "Johnny",
+  "Surname": "Rocket",
+  "Email": "jrocket@example.com",
+  "Role": [ "Manager", "Project Administrator" ]
+}
+```
+
 # php 笔记
 
   1. const 声明常量

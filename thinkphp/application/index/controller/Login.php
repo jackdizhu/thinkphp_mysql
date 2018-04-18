@@ -4,34 +4,25 @@ namespace app\index\controller;
 use think\Controller;
 use think\Db;
 use think\Request;
-use \extend\JWT\JWT;
-
+use \jwt\JWT;
 
 class Login extends Controller {
+    public static $key = "example_key";
     public function index(){
-        $key = "example_key";
         $token = array(
-            "iss" => "http://example.org",
-            "aud" => "http://example.com",
-            "iat" => 1356999524,
-            "nbf" => 1357000000
+            "user" => "jackdizhu",
+            // 什么时候过期，这里是一个Unix时间戳，是否使用是可选的；
+            "exp" => strtotime('+1 day')
         );
-
-        /**
-         * IMPORTANT:
-         * You must specify supported algorithms for your application. See
-         * https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40
-         * for a list of spec-compliant algorithms.
-         */
-        $jwt = JWT::encode($token, $key);
-        $decoded = JWT::decode($jwt, $key, array('HS256'));
-
-        print_r($decoded);die(0);
+        // 加密
+        $jwt = JWT::encode($token, $this::$key);
+        // 解密
+        $decoded = JWT::decode($jwt, $this::$key, array('HS256'));
 
         $User = Db::name('User');
         // $this->show('index');
-        $arr['userName']=input('post.userName');
-        $arr['password']=input('post.password');
+        $arr['userName']=input('get.userName');
+        $arr['password']=input('get.password');
 
         if($arr['userName'] && $arr['password']){
             // 查询 数据
@@ -47,6 +38,9 @@ class Login extends Controller {
             $arr['err'] = '填写信息不全 . . ';
             $arr['code'] = '3';
         }
+        // 测试
+        $arr['token'] = $jwt;
+        $arr['decoded'] = $decoded;
 
         return json($arr);
     }

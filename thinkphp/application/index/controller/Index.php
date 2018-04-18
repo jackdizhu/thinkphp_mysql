@@ -13,7 +13,7 @@ class Index extends Controller {
         $arr['err'] = '填写信息不全 . . ';
         $arr['code'] = '-1';
         // return $this->success('请求拦截 success');
-        return $this->error('请求拦截 error');
+        // return $this->error('请求拦截 error');
     }
 
     public function index()
