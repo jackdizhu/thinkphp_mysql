@@ -15,13 +15,23 @@ class Jsonwebtoken extends Controller {
     public function index(){
         $token = array(
             "user" => "jackdizhu",
-            // 什么时候过期，这里是一个Unix时间戳，是否使用是可选的；
+            "date" => date("Y-m-d H:i:s", time() + 60),
+            // 什么时候过期，这里是一个Unix时间戳，是否使用是可选的；秒数
             "exp" => time() + 60
         );
         // 加密
-        $jwt = JWT::encode($token, $this::$key);
-        // 解密
-        $decoded = JWT::decode($jwt, $this::$key, array('HS256'));
+        try
+        {
+            $jwt = JWT::encode($token, $this::$key);
+            // 解密
+            $decoded = JWT::decode($jwt, $this::$key, array('HS256'));
+        }
+        //捕获异常
+        catch(Exception $e)
+        {
+            $jwt = 'encryption exception';
+            $decoded = 'token validation error';
+        }
 
         $arr['userName']=input('get.userName');
         $arr['password']=input('get.password');
@@ -38,11 +48,21 @@ class Jsonwebtoken extends Controller {
     public function jwtDe(){
         // $jwt = input('get.token');
         $jwt = Cookie::get('token');
-        // 解密
-        $decoded = JWT::decode($jwt, $this::$key, array('HS256'));
+        //在 "try" 代码块中触发异常
+        try
+        {
+            // 解密
+            $decoded = JWT::decode($jwt, $this::$key, array('HS256'));
+        }
+        //捕获异常
+        catch(Exception $e)
+        {
+            $decoded = 'token validation error';
+        }
 
         $arr['token'] = $jwt;
         $arr['decoded'] = $decoded;
+        $arr['date'] = date("Y-m-d H:i:s", $decoded->exp);
 
         return json($arr);
     }
@@ -50,7 +70,8 @@ class Jsonwebtoken extends Controller {
         $token = array(
             "userName" => input('get.userName'),
             "password" => input('get.password'),
-            // 什么时候过期，这里是一个Unix时间戳，是否使用是可选的；
+            "date" => date("Y-m-d H:i:s", time() + 60),
+            // 什么时候过期，这里是一个Unix时间戳，是否使用是可选的；秒数
             "exp" => time() + 60
         );
         // 加密

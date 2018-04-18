@@ -9,6 +9,41 @@
     // api 地址
     http://127.0.0.1/thinkphp_mysql/thinkphp/public/index.php/index/Register/index
 
+# php 笔记
+
+``` js
+// $json stdClass Object 取对象属性
+stdClass Object
+(
+  [client_id] => 1
+  [client_name] => aa
+  [email] => example2@gmail.com
+  [pass] => 1111
+  [dob] => 1986-12-20
+  [tob] => 00:00:00
+)
+$json->client_id // php 取 Object 对象属性
+```
+``` php
+// 取 public 定义数据
+public static $key = "example_key";
+public function index(){
+  $k = $this::$key
+}
+// 错误捕获
+try
+{
+  // 解密
+  $decoded = JWT::decode($jwt, $this::$key, array('HS256'));
+}
+//捕获异常
+catch(Exception $e)
+{
+
+  $decoded = 'token validation error';
+}
+```
+
 # jwt 参数组成
 
 ``` js
