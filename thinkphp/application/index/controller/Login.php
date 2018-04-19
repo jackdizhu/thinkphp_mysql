@@ -21,12 +21,14 @@ class Login extends Controller {
 
         $User = Db::name('User');
         // $this->show('index');
-        $arr['userName']=input('get.userName');
-        $arr['password']=input('get.password');
+        // $arr['userName']=input('get.userName');
+        // $arr['password'] = input('get.password');
+        $arr['userName'] = 'userName';
+        $arr['password'] = "' or 1=1#";
 
         if($arr['userName'] && $arr['password']){
             // 查询 数据
-            $id = $User->where($arr)->find();
+            echo $id = $User->fetchSql(true)->where($arr)->find();
             if(!$id){
                 $arr['code'] = '2';
                 $arr['err'] = '用户名或密码错误';

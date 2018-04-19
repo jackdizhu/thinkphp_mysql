@@ -65,6 +65,8 @@ catch(Exception $e)
   "Email": "jrocket@example.com",
   "Role": [ "Manager", "Project Administrator" ]
 }
+// sql 打印 $User->fetchSql(true)
+echo $id = $User->fetchSql(true)->where($arr)->find();
 ```
 
 # php 笔记
