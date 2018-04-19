@@ -32,6 +32,7 @@ class Login extends Controller {
                 $arr['err'] = '用户名或密码错误';
             }else{
                 $arr['code'] = '1';
+                $arr['password'] = '********';
                 session('userName',$arr['userName']);
             }
         }else{

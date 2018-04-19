@@ -23,7 +23,7 @@ class Register extends Controller {
                 $arr['code'] = '2';
                 $arr['err'] = '用户名已存在';
             } else {
-                // 插入数据 
+                // 插入数据
                 $id = $User->insert($arr);
                 if($id){
                     $arr['code'] = '1';
@@ -31,7 +31,7 @@ class Register extends Controller {
                     $arr['err'] = '增加数据失败';
                     $arr['code'] = '3';
                 }
-            } 
+            }
         }else{
             $arr['err'] = '填写信息不全 . . ';
             $arr['code'] = '3';
