@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+    <meta name="renderer" content="webkit" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="Expires" content="-1"/>
+
+    <meta http-equiv="Cache-Control" content="no-cache"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <title>tp_app1</title>
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <link rel="stylesheet" type="text/css" href="./css/base.css">
+
+</head>
+<body>
+
+  <div class="formBox">
+      <form id="myForm">
+          <input type="file" id="u_photo" name="file" />
+          <input type="button" id="submit-btn" value="上传" />
+      </form>
+  </div>
+
+  <script type="text/javascript" src="./js/jquery.min.js"></script>
+  <script type="text/javascript" src="./js/com.js"></script>
+  <script>
+    var host = 'http://127.0.0.1/thinkphp_mysql/thinkphp/public/index.php';
+    $("#submit-btn").on('click', function() {
+        $.ajax({
+            url: host + '/index/upload/index',
+            type: "post",
+            data: new FormData($("#myForm").get(0)),
+            //十分重要，不能省略
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function (res) {
+              console.log(res)
+            }
+        });
+    });
+  </script>
+
+</html>
