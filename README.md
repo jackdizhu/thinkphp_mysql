@@ -25,6 +25,8 @@ stdClass Object
 $json->client_id // php 取 Object 对象属性
 ```
 ``` php
+// php 文件上传
+$file = Request()->file('file');
 // 取 public 定义数据
 public static $key = "example_key";
 public function index(){
