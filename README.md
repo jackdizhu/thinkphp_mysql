@@ -44,6 +44,27 @@ catch(Exception $e)
 
   $decoded = 'token validation error';
 }
+
+```
+
+* 生成数据字典
+
+``` sql
+SELECT
+    TABLE_SCHEMA AS '数据库名称',
+    TABLE_NAME AS '表名',
+    ORDINAL_POSITION AS '字段编号',
+    COLUMN_NAME AS '字段名',
+    COLUMN_TYPE AS '数据类型',
+    IS_NULLABLE AS '允许为空',
+    COLUMN_KEY AS '键类型',
+    EXTRA AS '自增属性',
+    CHARACTER_SET_NAME AS '编码名称',
+    COLUMN_COMMENT AS '字段说明'
+FROM
+    information_schema. COLUMNS
+WHERE
+    TABLE_SCHEMA = '数据库名称'
 ```
 
 # jwt 参数组成
