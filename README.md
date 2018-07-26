@@ -47,7 +47,8 @@ catch(Exception $e)
 
 ```
 
-* 生成数据字典
+* 生成 字段 数据字典
+* 生成 表 数据字典
 
 ``` sql
 SELECT
@@ -63,6 +64,16 @@ SELECT
     COLUMN_COMMENT AS '字段说明'
 FROM
     information_schema. COLUMNS
+WHERE
+    TABLE_SCHEMA = '数据库名称'
+
+SELECT
+    TABLE_SCHEMA AS '数据库名称',
+    TABLE_NAME AS '表名',
+    TABLE_TYPE AS '表类型',
+    TABLE_COMMENT AS '表说明'
+FROM
+    information_schema. TABLES
 WHERE
     TABLE_SCHEMA = '数据库名称'
 ```
