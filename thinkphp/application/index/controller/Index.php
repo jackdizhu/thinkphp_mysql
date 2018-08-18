@@ -6,6 +6,7 @@ use think\Request;
 use think\Session;
 use think\Cookie;
 use think\Config;
+use think\Db;
 
 class Index extends Controller {
     public function __construct(){
@@ -16,8 +17,24 @@ class Index extends Controller {
         // return $this->error('请求拦截 error');
     }
 
-    public function index()
-    {
+    public function index(){
         return 'index';
+    }
+
+    public function page(){
+
+        $User = Db::name('User');
+
+        $pageSize = 1;
+        $page = input('get.page') ? input('get.page') : 1;
+
+        $w_arr['userName'] = 'userName';
+
+        // $arr = $User->where($w_arr)->find();
+        $arr = $User->where($w_arr)->paginate($pageSize, false, [
+            'page'=>$page
+        ]);
+
+        return json($arr);
     }
 }
