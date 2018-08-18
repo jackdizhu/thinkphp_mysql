@@ -6,8 +6,10 @@
 
     // html 地址
     http://127.0.0.1/thinkphp_mysql/tp_app1/
-    // api 地址
+    // tp5.0 api 地址
     http://127.0.0.1/thinkphp_mysql/thinkphp/public/index.php/index/Register/index
+    // tp3.2 api 地址
+    http://127.0.0.1/thinkphp_mysql/thinkphp/index.php/home/index/index
 
 # php 笔记
 
