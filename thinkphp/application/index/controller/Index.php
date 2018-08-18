@@ -34,6 +34,7 @@ class Index extends Controller {
         $arr = $User->where($w_arr)->paginate($pageSize, false, [
             'page'=>$page
         ]);
+        $count = $User->where($w_arr)->count();
 
         return json($arr);
     }
